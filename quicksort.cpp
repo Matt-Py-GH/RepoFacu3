@@ -17,7 +17,7 @@ void QuickSort(int vectorArreglo[], int izquierdaDelArreglo, int derechaDelArreg
         }
     }
     if (izquierdaDelArreglo < j)QuickSort(vectorArreglo,izquierdaDelArreglo,j);
-    if(i<derechaDelArreglo) QuickSort(vectorArreglo,i,derechaDelArreglo);
+    if(i<derechaDelArreglo)QuickSort(vectorArreglo,i,derechaDelArreglo);
   }
 
 int main (){
