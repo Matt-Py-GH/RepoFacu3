@@ -1,47 +1,32 @@
-#include <iostream>
+//Realice un programa que le pida al usuario 2 arreglos y forme un tercer arreglo
+//con la suma de los elementos de los dos arreglos ingresados
+#include<iostream>
 using namespace std;
 
-int main() {
-    const int largoArrays = 10;
-    int arrayUno[largoArrays];
-    int arrayDos[largoArrays];
-    int arrayResultado[largoArrays];
+int main(){
 
-    //Ingresar valores para el primer array
-    cout << "Ingrese 10 valores para el primer array:" << endl;
-    for(int i = 0; i < largoArrays; i++) {
-        cout << "Valor " << i + 1 << ": ";
-        cin >> arrayUno[i];
-    }
+const int tamanioArreglos = 8;
+const char marcaDeAgua[8] = "Delgado";
 
-    //Ingresar valores para el segundo array
-    cout << "Ingrese 10 valores para el segundo array:" << endl;
-    for(int i = 0; i < largoArrays; i++) {
-        cout << "Valor " << i + 1 << ": ";
-        cin >> arrayDos[i];
-    }
+int arregloUno[tamanioArreglos];
+int arregloDos[tamanioArreglos];
+int arregloResultante[tamanioArreglos];
 
-    cout<<"Matriz original"<<endl;
-    for(int i = 0; i<largoArrays; i++){
-        cout<<arrayUno[i]<<" ";
-    }
-    cout<<"\n";
-    for(int i = 0; i<largoArrays; i++){
-        cout<<arrayDos[i]<<" ";
-    }
-    cout<<"\n\n";
-
-    //Calcular la suma de los arrays y almacenarla en arrayResultado
-    for(int i = 0; i < largoArrays; i++) {
-        arrayResultado[i] = arrayUno[i] + arrayDos[i];
-    }
-
-    //Mostrar el resultado
-    cout << "El array de la suma de los elementos es:" << endl;
-    for(int i = 0; i < largoArrays; i++) {
-        cout<<arrayResultado[i]<<" ";
-    }
-
-    return 0;
+for(int i=0; i<=tamanioArreglos; i++){
+    cout<<"Ingrese el elemento del primer arreglo: ";
+    cin>>arregloUno[i];
+    cout<<"Ingrese el elemento del segundo arreglo: ";
+    cin>>arregloDos[i];
+    arregloResultante[i] = arregloUno[i] + arregloDos[i];
 }
 
+for(int i=0; i<=tamanioArreglos; i++){
+    cout<<arregloResultante[i]<<" ";
+}
+
+
+cout<<"Programa hecho por: "<<marcaDeAgua<<endl;
+
+return 0;
+
+}

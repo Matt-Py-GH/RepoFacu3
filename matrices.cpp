@@ -47,7 +47,7 @@ int main() {
 
         if (filas < 0 || columnas < 0) printf("\nHas ingresado un indice negativo, por favor ingrese indices validos.\n\n");
 
-        else if (filas >= FILAS or columnas >= COLUMNAS) printf("\nHas ingresado un indice fuera del rango de la matriz, por favor ingrese indices validos.\n\n");
+        else if (filas >= FILAS || columnas >= COLUMNAS) printf("\nHas ingresado un indice fuera del rango de la matriz, por favor ingrese indices validos.\n\n");
 
         else (swich = false);
 

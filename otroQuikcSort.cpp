@@ -1,54 +1,72 @@
 #include <iostream>
-#include <vector>
 using namespace std;
-///->cuatro funciones
 
-///-->Funcion para intercambiar elementos------
 
-void swap(int& a, int& b){
-  int temp=a;
-  a=b;
-  b=temp;
+bool malCargado(int vectorArreglo[], int numeroDeElementos){
+
+for(int i = 0; i<numeroDeElementos; i++){
+    int aux = vectorArreglo[i];
+    if(aux == vectorArreglo[i+1]){return true;}
+
+}
+return false;
+
 }
 
-///--->Funcion para encontrar el pivote--------
+void QuickSort(int vectorArreglo[], int izquierdaDelArreglo, int derechaDelArreglo){
+  int i=izquierdaDelArreglo;
+  int j=derechaDelArreglo;
+  int pivot=vectorArreglo[(izquierdaDelArreglo + derechaDelArreglo)/2];
 
-int particion(vector<int>arr, int elemChico, int elemGrande){
-  int pivote= arr[elemGrande]; ///-->se elige el ultimo elemento del pivote
-  int i= (elemChico - 1); ///--> es el indice del elemento mas chico
-
-  for(int j=elemChico; j<=elemGrande-1;j++){///--> va a iterar del elemento mas chico al elemento mas grande
-     if (arr[j] < pivote){
+  while (i<=j){
+    while(vectorArreglo[i]<pivot && i<derechaDelArreglo){i++;}
+    while(pivot < vectorArreglo[j] && j> izquierdaDelArreglo){j--;}
+    if(i<=j){
+        int k=vectorArreglo[i];
+        vectorArreglo[i]=vectorArreglo[j];
+        vectorArreglo[j]=k;
         i++;
-        swap(arr[i],arr[j]);
-     }
-  }
-  swap (arr[i+1], arr[elemGrande]);
-return (i+1);
-}
-///-->Funcion principal del QuickSort---------
-
-void quicksort(vector<int>& arr, int elemChico, int elemGrande){
-   if (elemChico< elemGrande){
-       int pivoteDelSort= particion(arr, elemChico, elemGrande);
-       quicksort(arr, elemChico, pivoteDelSort - 1);
-       quicksort(arr, pivoteDelSort + 1, elemGrande);
-   }
-}
-void imprimirArr(vector<int>& arr){
-    for (int i=0; i<arr.size();i++){
-        cout<<arr[i]<<" ";
+        }
     }
-   cout<<endl;
-}
+    if (izquierdaDelArreglo < j)QuickSort(vectorArreglo,izquierdaDelArreglo,j);
+    if(i<derechaDelArreglo)QuickSort(vectorArreglo,i,derechaDelArreglo);
+  }
 
-int main(){
-  vector<int>arr={33,16,55,1,10,22,81,7,4,3};
-  cout <<"Array desordenado: ";
-  imprimirArr(arr);
-  quicksort(arr, 0, arr.size() - 1);
-  cout <<"Array ordenado: ";
-  imprimirArr(arr);
+int main (){
+   int numeroDeElementos;
+   cout<<"Ingrese la cantidad de elementos del arreglo: ";
+   cin>>numeroDeElementos;
 
- return 0;
+   int vectorArreglo[numeroDeElementos];
+
+   cout<<"Ingrese los elementos:\n";
+
+   for(int i=0;i<numeroDeElementos;i++){
+    cin>>vectorArreglo[i];
+    }
+
+    if(malCargado(vectorArreglo, numeroDeElementos)){
+        cout<<"Vuelva a introducir los valores, alguno de ellos fue cargado repetido\n";
+    }
+    else{
+
+   cout<<"Array original: ";
+
+   for(int i=0;i<numeroDeElementos;i++){
+    cout<<vectorArreglo[i]<<" ";
+   }
+
+   cout<<"\n\n";
+
+   QuickSort(vectorArreglo,0,numeroDeElementos-1);
+
+   cout<<"Array ordenado: ";
+
+   for(int i=0;i<numeroDeElementos;i++){
+    cout<<vectorArreglo[i]<<" ";
+   }
+
+   cout<<"\n\n";}
+
+   return 0;
 }

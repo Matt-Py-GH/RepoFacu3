@@ -1,23 +1,27 @@
 #include <iostream>
 using namespace std;
 
+
 void QuickSort(int vectorArreglo[], int izquierdaDelArreglo, int derechaDelArreglo){
+
   int i=izquierdaDelArreglo;
   int j=derechaDelArreglo;
-  int t=vectorArreglo[(izquierdaDelArreglo + derechaDelArreglo)/2];
+  int pivot=vectorArreglo[(izquierdaDelArreglo + derechaDelArreglo)/2];
 
   while (i<=j){
-    while(vectorArreglo[i]<t && i<derechaDelArreglo){i++;}
-    while(t < vectorArreglo[j] && j> izquierdaDelArreglo){j--;}
+    while(vectorArreglo[i]<pivot && i<derechaDelArreglo){i++;}
+    while(pivot < vectorArreglo[j] && j> izquierdaDelArreglo){j--;}
     if(i<=j){
-        int k=vectorArreglo[i];
+        int auxiliar=vectorArreglo[i];
         vectorArreglo[i]=vectorArreglo[j];
-        vectorArreglo[j]=k;
+        vectorArreglo[j]=auxiliar;
         i++;
+        j--;
         }
     }
-    if (izquierdaDelArreglo < j)QuickSort(vectorArreglo,izquierdaDelArreglo,j);
-    if(i<derechaDelArreglo)QuickSort(vectorArreglo,i,derechaDelArreglo);
+    if(izquierdaDelArreglo < j){QuickSort(vectorArreglo,izquierdaDelArreglo,j);}
+    if(i < derechaDelArreglo){QuickSort(vectorArreglo,i,derechaDelArreglo);}
+
   }
 
 int main (){
