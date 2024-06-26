@@ -14,7 +14,7 @@ Nodo *Lista = nullptr;
 bool ListaVacia();
 char *SacaLista();
 void MuestraListado();
-void InsertarLista(const char *Nom);
+void InsertarLista(const char *nombre);
 //--------------------------------------------------//
 bool ListaVacia() {
  return Lista == nullptr;
@@ -25,11 +25,11 @@ char *SacaLista() {
  printf("La lista está vacía.\n");
  return nullptr;
  }
- Nodo *temp = Lista;
+ Nodo *temporal = Lista;
  char *nombre = strdup(Lista->nombreInsertado); // Copiamos el nombre
  Lista = Lista->punteroSiguiente;
- free(temp->nombreInsertado); // Liberar la memoria del nombre del nodo
- free(temp); // Liberar la memoria del nodo
+ free(temporal->nombreInsertado); // Liberar la memoria del nombre del nodo
+ free(temporal); // Liberar la memoria del nodo
  return nombre;
 }
 //--------------------------------------------------//
@@ -38,29 +38,25 @@ void MuestraListado() {
  printf("La lista está vacía.\n");
  return;
  }
- Nodo *temp = Lista;
- while (temp != nullptr) {
- printf("%s\n", temp->nombreInsertado);
- temp = temp->punteroSiguiente;
+ Nodo *temporal = Lista;
+ while (temporal != nullptr) {
+ printf("%s\n", temporal->nombreInsertado);
+ temporal = temporal->punteroSiguiente;
  }
 }
 //--------------------------------------------------//
-void InsertarLista(const char *Nom) {
- Nodo *t = new Nodo;
- if (!t) {
- printf("No se pudo asignar memoria.\n");
- return;
- }
- t->nombreInsertado = strdup(Nom); // Asignamos el nombre
- t->punteroSiguiente = nullptr;
+void InsertarLista(const char *nombre) {
+ Nodo *nodoX = new Nodo;
+ nodoX->nombreInsertado = strdup(nombre); // Asignamos el nombre
+ nodoX->punteroSiguiente = nullptr;
  if (Lista == nullptr) {
- Lista = t;
+ Lista = nodoX;
  } else {
  Nodo *q = Lista;
  while (q->punteroSiguiente != nullptr) {
  q = q->punteroSiguiente;
  }
- q->punteroSiguiente = t;
+ q->punteroSiguiente = nodoX;
  }
 }
 //--------------------------------------------------//
@@ -84,7 +80,7 @@ int main() {
 
  // Ejemplo de extracción de un elemento
  char *nombre = SacaLista();
- if (nombre) {
+ if(nombre) {
  printf("Elemento extraido: %s\n", nombre);
  free(nombre);
  }
