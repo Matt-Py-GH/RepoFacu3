@@ -1,10 +1,11 @@
 #include <iostream>
+#include<cstring>
 using namespace std;
 
 int main() {
     char palabra[50];
-    cin>>palabra;
-    int largoCadena = end(palabra) - begin(palabra);
+    gets(palabra);
+    int largoCadena = strlen(palabra);
 
     //Array para contar la frecuencia de cada letra (considerando sólo letras minúsculas)
     int frecuenciaDeLetra[26] = {0};
