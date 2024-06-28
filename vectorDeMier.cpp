@@ -29,7 +29,7 @@ int main(){
     cout<<"Array despues de eliminar el tercer elemento: ";
 
     for(int i=0; i<7; i++){
-        if(elementosEnteros[i]==30){cout<<"";}
+        if(elementosEnteros[i]==30){elementosEnteros[i] = NULL;}
         else{cout<<elementosEnteros[i]<<" ";}
     }
 
